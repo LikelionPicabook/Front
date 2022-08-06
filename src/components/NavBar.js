@@ -1,19 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Menu } from 'antd';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Axios from 'axios';	// 추가
-
-const MenuList = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  .ant-menu {
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-  }
-`;
 
 function NavBar() {
 
@@ -37,34 +25,48 @@ function NavBar() {
       });
   }
 
+
   return(
     <div>
-      <MenuList>
-        <Menu>
-          { auth ?
-            <Menu.Item key="logout" onClick={handleLogout}>
-              로그아웃
-            </Menu.Item>
-            :
-            <Menu.Item key="signin">
-              <Link to="/login">
-              로그인
-              </Link>
-            </Menu.Item>
-          }
-          { auth ?
-            <></>
+      <Menu>
+        { auth ?
+          <MenuItem key="logout" onClick={handleLogout}>
+            로그아웃
+          </MenuItem>
           :
-            <Menu.Item key="signup">
-              <Link to="/signup">
-              회원가입
-              </Link>
-            </Menu.Item>
-          }
-        </Menu>
-      </MenuList>
+          <MenuItem key="signin">
+            <Link to="/login">
+            로그인
+            </Link>
+          </MenuItem>
+        }
+        { auth ?
+          <></>
+        :
+          <MenuItem key="signup">
+            <Link to="/signup">
+            회원가입
+            </Link>
+          </MenuItem>
+        }
+      </Menu>
     </div>
   )
 }
 
 export default NavBar;
+
+const Menu = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 50px;
+  box-sizing: border-box;
+  height: 50px;
+  width: 100%;
+  background-color:pink;
+`;
+
+const MenuItem = styled.div`
+`

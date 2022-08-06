@@ -12,7 +12,7 @@ const User = () => {
   return(
     <>
       <Routes>
-        <Route path="/main" element={<Home/>} />
+        <Route path="/home" element={<Home/>} />
         <Route path="/search" element={<Search/>} />
         <Route path="/mypage" element={<MyPage/>} />
       </Routes>

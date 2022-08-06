@@ -1,4 +1,5 @@
 
+
 .title {
   position: absolute;
   top: 113px;
@@ -11,7 +12,7 @@
   color: #9747FF;
 }
 
-section {
+.log_section {
   width: min-content;
   display: flex;
   flex-direction: column;
@@ -130,4 +131,5 @@ form {
   margin: auto;
   width: 107px;
   color: #494949;
+  font-size: 14px;
 }
