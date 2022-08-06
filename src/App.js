@@ -2,9 +2,8 @@
 import "./index.css"
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Login from './pages/Login'
 import User from './components/User'
-import Signin from './pages/Signin'
+import Start from './pages/Start'
 import styled from 'styled-components';
 
 
@@ -14,9 +13,8 @@ const App = () => {
       <BrowserRouter>
         <Frame>
           <Routes>
-            <Route path="/" element={<Login/>} />
-            <Route path="/signin" element={<Signin/>} />
-            <Route path="/*" element={<User/>} />
+            <Route path="/*" element={<Start/>} />
+            <Route path="/user/*" element={<User/>} />
           </Routes>
         </Frame>
       </BrowserRouter>

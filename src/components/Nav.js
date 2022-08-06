@@ -8,17 +8,17 @@ const Nav = () => {
   return (
     <Navbar>
       <div>
-        <NavLink to="/">
+        <NavLink to="/user/home">
           Home
         </NavLink>
       </div>
       <div>
-        <NavLink to="/search">
+        <NavLink to="/user/search">
           Search
         </NavLink>
       </div>
       <div>
-        <NavLink to="/mypage">
+        <NavLink to="/user/mypage">
           MyPage
         </NavLink>
       </div>
