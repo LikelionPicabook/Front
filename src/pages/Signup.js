@@ -38,7 +38,7 @@ const Signup = () => {
       return false
     }
 
-    Axios.post('http://localhost:8000/rest-auth/signup', user)
+    Axios.post('/api/rest-auth/signup', user)
       .then(res => {
         if (res.data.key) {
           localStorage.clear()

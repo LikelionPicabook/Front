@@ -22,13 +22,13 @@ const Login= () => {
       password: password
     }
 
-    Axios.post('http://localhost:8000/rest-auth/login', user)
+    Axios.post('/api/rest-auth/login', user)
       .then(res => {
         if (res.data.key) {
           localStorage.clear()
           localStorage.setItem('token', res.data.key)
           // 사용하려면 App.js에서 /로 라우팅해야 한다
-          window.location.replace('/user')
+          window.location.replace('/login')
         } else {
           setEmail('')
           setPassword('')
