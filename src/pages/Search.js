@@ -23,8 +23,8 @@ const Search = () => {
     return (
       <>
         <Header>
+          <Icon src="/icon/arrow-left.svg" onClick={searchShowing}></Icon>
           <Title>사진관 검색해!</Title>
-          <Icon src="/icon/search-icon.svg" onClick={searchShowing}></Icon>
         </Header>
         <Map/>
       </>
