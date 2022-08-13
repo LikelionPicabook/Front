@@ -40,6 +40,7 @@ const Signup = () => {
 
     Axios.post('/api/rest-auth/signup', user)
       .then(res => {
+        console.log("여기로 들어오긴 하냐?!")
         if (res.data.key) {
           localStorage.clear()
           localStorage.setItem('token', res.data.key)

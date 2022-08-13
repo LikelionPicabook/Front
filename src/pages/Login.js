@@ -24,6 +24,7 @@ const Login= () => {
 
     Axios.post('/api/rest-auth/login', user)
       .then(res => {
+        console.log("여기로 들어오긴 하나?!")
         if (res.data.key) {
           localStorage.clear()
           localStorage.setItem('token', res.data.key)
