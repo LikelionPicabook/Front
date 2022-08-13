@@ -38,7 +38,7 @@ const Signup = () => {
       return false
     }
 
-    Axios.post('/api/v1/mall/auth/register/', user)
+    Axios.post('http://localhost:8000/rest-auth/signup', user)
       .then(res => {
         if (res.data.key) {
           localStorage.clear()
@@ -55,12 +55,12 @@ const Signup = () => {
       })
       .catch(err => {
         console.clear()
-        alert('아이디 혹은 비밀번호가 일치하지 않습니다')
+        alert('회원가입 불가능')
       })
   }
 
   return (
-    <>
+    <Background>
       <Header>
         <Link to="/login">
           <Close style={{backgroundImage:`url(/icon/x.svg)`}}></Close>
@@ -116,7 +116,7 @@ const Signup = () => {
           <SignupBtn type='submit' size="large" value='피카북 시작하기' />
         </SignupForm>
       </SignupDiv>
-    </>
+    </Background>
     
   )
 }
@@ -196,4 +196,9 @@ const Close = styled.div`
   position: absolute;
   top: 55px;
   left: 30px;
+`
+const Background = styled.div`
+  background-color: white;
+  height: 100%;
+  width: 100%;
 `
