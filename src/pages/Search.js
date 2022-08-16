@@ -3,10 +3,22 @@ import React, { useState } from "react";
 import Map from "../components/Map/MapContent"
 // import MapCompo from "../components/Map/Map"
 import styled from 'styled-components';
+import { Route, Routes } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+import SearchResult from "./SearchResult";
 
 const Search = () => {
-  const [showing, setShowing] = useState(true);
-  const searchShowing = () => setShowing(!showing);
+  const [showing, setShowing] = useState(0);
+  let [inputValue, setInputValue] = useState("");
+  const searchShowing = () => {
+    setShowing(!showing);
+  }
+  const navigate = useNavigate();
+  const handleSearch = () => {
+    console.log(inputValue);
+    navigate(`keyword?=${inputValue}`,{state: {keyword:inputValue}})
+  }
+  
   if (showing){
     return(
       <>
@@ -24,11 +36,15 @@ const Search = () => {
         <Header>
           <IconBack src="/icon/arrow-left.svg" onClick={searchShowing}></IconBack>
           <form>
-            <SearchBar type="text" placeholder="사진관 이름, 컨셉, 위치 등을 입력해보세요"></SearchBar>
-            <Button type="submit" value=""></Button>
+            <SearchBar type="text" placeholder="사진관 이름, 컨셉, 위치 등을 입력해보세요" onChange={(event) => setInputValue(event.target.value)}></SearchBar>
+            <Button type="button" value="" onClick={handleSearch}></Button>
           </form>
         </Header>
         <Map/>
+        <Routes>
+          <Route path="/keyword" element={<SearchResult/>}/>
+        </Routes>
+        
       </>
     );
   }

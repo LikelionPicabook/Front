@@ -24,7 +24,7 @@ const Nav = () => {
         <img src="/icon/cart.svg"></img>
         <Title>월간 포꾸</Title>
       </NavLink>
-      <NavLink to="/user/#" className={({ isActive }) => "nav-link" + (isActive ? "activated5" : "")}>
+      <NavLink to="/user/tips" className={({ isActive }) => "nav-link" + (isActive ? "activated5" : "")}>
         <img src="/icon/camera.svg"></img>
         <Title>사진찍기꿀팁</Title>
       </NavLink>
