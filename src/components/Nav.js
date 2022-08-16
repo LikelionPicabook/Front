@@ -20,7 +20,7 @@ const Nav = () => {
         <img src="/icon/edit.svg"></img>
         <Title>포토북 제작</Title>
       </NavLink>
-      <NavLink to="/user/#" className={({ isActive }) => "nav-link" + (isActive ? "activated4" : "")}>
+      <NavLink to="/user/monthly" className={({ isActive }) => "nav-link" + (isActive ? "activated4" : "")}>
         <img src="/icon/cart.svg"></img>
         <Title>월간 포꾸</Title>
       </NavLink>

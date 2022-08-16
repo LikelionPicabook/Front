@@ -1,21 +1,22 @@
 /* global kakao */
 import React, { useEffect } from "react";
-import { axios } from 'axios';
-import { photoBoxData } from './mapData';
+// import { axios } from 'axios';
+import { photoBoxData } from "./mapData";
 
 export default function Map() {
   useEffect(() => {
     mapscript();
   }, []);
 
-  const photoBoxData = () => {
-    axios.get("/api/checks/photo")
-      .then(res=>{
-        console.log(res.data);
-    }).catch(err => {
-      console.log(err);
-    });
-  }
+  // const photoBoxData = () => {
+  //   axios.get("/api/checks/photo")
+  //     .then(res=>{
+  //       console.log(res.data);
+  //   }).catch(err => {
+  //     console.log(err);
+  //   });
+  // }
+
 
   const data = photoBoxData;
 

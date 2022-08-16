@@ -1,19 +1,18 @@
 // src/pages/Search.js
-
 import React, { useState } from "react";
 import Map from "../components/Map/MapContent"
 // import MapCompo from "../components/Map/Map"
 import styled from 'styled-components';
 
 const Search = () => {
-  const [showing, setShowing] = useState(false);
+  const [showing, setShowing] = useState(true);
   const searchShowing = () => setShowing(!showing);
   if (showing){
     return(
       <>
         <Header>
           <Title>사진관 검색</Title>
-          <Icon src="/icon/search-icon.svg" onClick={searchShowing}></Icon>
+          <IconSearch src="/icon/search-icon.svg" onClick={searchShowing}></IconSearch>
         </Header>
         <Map/>
       </>
@@ -23,8 +22,11 @@ const Search = () => {
     return (
       <>
         <Header>
-          <Icon src="/icon/arrow-left.svg" onClick={searchShowing}></Icon>
-          <Title>사진관 검색해!</Title>
+          <IconBack src="/icon/arrow-left.svg" onClick={searchShowing}></IconBack>
+          <form>
+            <SearchBar type="text" placeholder="사진관 이름, 컨셉, 위치 등을 입력해보세요"></SearchBar>
+            <Button type="submit" value=""></Button>
+          </form>
         </Header>
         <Map/>
       </>
@@ -37,7 +39,7 @@ export default Search;
 const Header = styled.header`
   position: absolute;
   width: 100%;
-  height: 120px;
+  height: 110px;
   left: 0px;
   top: 0px;
 
@@ -54,11 +56,52 @@ const Title = styled.div`
   position: absolute;
   font-size: 18px;
   bottom: 30px;
+  font-weight: 500;
+  color: #1b1b1b;
 `
 
-const Icon = styled.img`
+const IconSearch = styled.img`
   position: absolute;
   bottom: 32px;
   right: 35px;
   cursor: pointer;
+`
+
+const IconBack = styled.img`
+  position: absolute;
+  bottom: 32px;
+  left: 25px;
+  cursor: pointer;
+`
+
+const SearchBar = styled.input`
+  box-sizing: border-box;
+  width: 290px;
+  height: 30px;
+  bottom: 28px;
+  right: 25px;
+  
+  position: absolute;
+
+  border: 1.5px solid #9848FF;
+  border-radius: 21.5px;
+  padding: 0 30px 1.5px 15px;
+  &::placeholder{
+    font-size: 10px;
+  }
+  &:focus{
+    outline: none;
+    padding-bottom: 1px;
+  }
+`
+
+const Button = styled.input`
+  background-image:url('/icon/search-icon.svg');
+  border: none;
+  background-color: transparent;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 32px;
+  top: 57px;
 `
