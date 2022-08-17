@@ -209,7 +209,7 @@ const Item = styled.div`
 `
 
 const Text = styled.div`
-  font-size: 10px;
+  font-size: 11px;
   white-space: nowrap;
   margin-top: 10px;
 `

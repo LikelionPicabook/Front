@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 
 const SearchResult = () => {
+  console.log(useLocation());
   const keyword = useLocation().state.keyword;
   console.log(keyword)
   return(

@@ -19,7 +19,6 @@ const User = () => {
         <Route path="/mypage" element={<MyPage/>} />
         <Route path="/monthly" element={<Monthly/>} />
         <Route path="/tips" element={<Tips/>} />
-        
       </Routes>
       <Nav/>
     </>

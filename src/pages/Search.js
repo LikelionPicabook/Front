@@ -14,11 +14,24 @@ const Search = () => {
     setShowing(!showing);
   }
   const navigate = useNavigate();
+  const data = {
+    value : inputValue
+  }
+  const postValue = () => {
+    axios.post(`http://127.0.0.1:8000/checks/search/keyword?=${inputValue}`,data)
+      .then(res=>{
+        console.log(res);
+        console.log("success");
+    })
+      .catch(err=>{
+        console.log(err);
+    })
+  }
   const handleSearch = () => {
     console.log(inputValue);
+    postValue();
     navigate(`keyword?=${inputValue}`,{state: {keyword:inputValue}})
   }
-  
   if (showing){
     return(
       <>

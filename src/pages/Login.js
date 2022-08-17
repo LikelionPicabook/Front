@@ -14,6 +14,8 @@ const Login= () => {
   const [password, setPassword] = useState('')
   const [errors, setErrors] = useState(false)
 
+  
+
   const onSubmit = (e) => {
     e.preventDefault()
 
@@ -22,28 +24,21 @@ const Login= () => {
       password: password
     }
 
-    Axios.post('/api/rest-auth/login', user)
-      .then(res => {
-        console.log("여기로 들어오긴 하나?!")
-        if (res.data.key) {
-          localStorage.clear()
-          localStorage.setItem('token', res.data.key)
-          // 사용하려면 App.js에서 /로 라우팅해야 한다
-          window.location.replace('/login')
-        } else {
-          setEmail('')
-          setPassword('')
-          localStorage.clear()
-          setErrors(true)
-        }
-      })
-      .catch(err => {
-        console.clear()
-        alert('아이디 또는 비밀번호가 일치하지 않습니다')
-        setEmail('')
-        setPassword('')
-      })
+    Axios.post('http://localhost:8000/rest-auth/login/',user)
+    .then(res => {
+      console.log(res.data);
+      localStorage.clear();
+      localStorage.setItem('token',res.data.key)
+      window.location.replace('http://localhost:3000/user/')
+    })
+    .catch(err=>{
+      console.log(err)
+      alert('로그인 안댐')
+      setEmail('')
+      setPassword('')
+    })
   }
+  
 
   return (
     <Background>
@@ -101,3 +96,4 @@ const Background = styled.div`
   height: 100%;
   width: 100%;
 `
+
