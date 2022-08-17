@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import SearchResult from "./SearchResult";
 import axios from "axios";
 const Search = () => {
-  const [showing, setShowing] = useState(0);
+  const [showing, setShowing] = useState(true);
   let [inputValue, setInputValue] = useState("");
   const searchShowing = () => {
     setShowing(!showing);
