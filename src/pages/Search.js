@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { Route, Routes } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import SearchResult from "./SearchResult";
-
+import axios from "axios";
 const Search = () => {
   const [showing, setShowing] = useState(0);
   let [inputValue, setInputValue] = useState("");
