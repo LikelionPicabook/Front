@@ -23,45 +23,71 @@ const Tips = () => {
   ]
   const itemArr = [
     {
-      imgNum: 1,
-      text: []
+      imgNum: [],
+      text: [],
+      heart: []
     },
     {
       imgNum: 2,
-      text: ['인스타 1등 포즈','드라마에 나온 포즈','인스타 셀럽들은 다해','짱구가 좋은 사람들','네컷 연결해서 찍는 법','페트와 메트 따라하기']
+      text: ['인스타 1등 포즈','드라마에 나온 포즈','인스타 셀럽들은 다해','짱구가 좋은 사람들','네컷 연결해서 찍는 법','페트와 메트 따라하기'],
+      heart: [false, false, false, false, false, false]
     },
     {
       imgNum: 3,
-      text: ['킹받는 네컷포즈','쿠로미♥마이멜로디','페트와 메트 네컷','심으뜸 네컷 바프','콩순이 네컷 따라하기','인스타여신 포즈 따라하기']
+      text: ['킹받는 네컷포즈','쿠로미♥마이멜로디','페트와 메트 네컷','심으뜸 네컷 바프','콩순이 네컷 따라하기','인스타여신 포즈 따라하기'],
+      heart: [false, false, false, false, false, false]
     },
     {
       imgNum: 4,
-      text: ['청량한 무드','배우 프로필 정석','상큼한 무드','누드톤 무드','여름날의 무드','러블리 핑크 무드']
+      text: ['청량한 무드','배우 프로필 정석','상큼한 무드','누드톤 무드','여름날의 무드','러블리 핑크 무드'],
+      heart: [false, false, false, false, false, false]
     },
     {
       imgNum: 5,
-      text: ['댕댕이들과 함께','사내맞선 셀프컷','러블리 커플','걸스데이 셀프컷','차분하고 힙하게','졸업사진 셀프컷']
+      text: ['댕댕이들과 함께','사내맞선 셀프컷','러블리 커플','걸스데이 셀프컷','차분하고 힙하게','졸업사진 셀프컷'],
+      heart: [false, false, false, false, false, false]
     },
     {
       imgNum: 6,
-      text: ['복고풍 사진관','산격동 사진관','라피아 사진관','레치키치 사진관','시현하다에서 독특하게','리유스튜디오 웨딩촬영']
+      text: ['복고풍 사진관','산격동 사진관','라피아 사진관','레치키치 사진관','시현하다에서 독특하게','리유스튜디오 웨딩촬영'],
+      heart: [false, false, false, false, false, false]
     },
     {
       imgNum: 7,
-      text: ['과감하게 누워찍기','커플 바디프로필','AOA 바디 프로필','제니 화보','캘빈클라인 속옷 활용하기','지피티 바디프로필']
+      text: ['과감하게 누워찍기','커플 바디프로필','AOA 바디 프로필','제니 화보','캘빈클라인 속옷 활용하기','지피티 바디프로필'],
+      heart: [false, false, false, false, false, false]
     }
   ]
+  
   const [pageNum, setPageNum] = useState(0);
   const [pageComponents, setPageComponents] = useState(pageArr);
-
+  const [itemComponents, setItemComponents] = useState(itemArr);
+  
   const pageShow = (num) => {
     setPageNum(num);
     pageArr[num].style = activeStyle;
     setPageComponents(pageArr);
   }
-  let [heartColor, setHeartColor] = useState(true);
-  const heartChange = () => {
-    setHeartColor(!heartColor);
+  const HeartChange = (pageNum, idx) => {
+    let copyArr = [...itemComponents];
+    copyArr[pageNum].heart[idx] = !copyArr[pageNum].heart[idx];
+
+    if (copyArr[pageNum].heart[idx] === true){
+      copyArr[0].text = [...itemComponents[0].text, copyArr[pageNum].text[idx]];
+      copyArr[0].imgNum = [...itemComponents[0].imgNum, `${pageNum+1}-${idx+1}`];
+    }
+
+    else{
+      for (let i=0; i<copyArr[0].text.length; i++){
+        if (copyArr[pageNum].text[idx] === copyArr[0].text[i]){
+          copyArr[0].text.splice(i,1);
+          copyArr[0].imgNum.splice(i,1);
+          i--;
+        }
+      }
+    }
+    console.log(copyArr[0])
+    setItemComponents(copyArr);
   }
   return(
     <>
@@ -75,17 +101,23 @@ const Tips = () => {
       </Pages>
       <Container>
         {
-          itemArr[pageNum].text.map((item,idx)=>{
-            console.log(itemArr[pageNum].imgNum)
-            return(
-              <Item key={idx}>
-                <Image src={`/img/${itemArr[pageNum].imgNum}-${idx+1}.png`}></Image>
-                <Heart 
-                  onClick={()=>{heartChange()}}
-                  src={`/img/${heartColor}heart.png`}
-                ></Heart>
-                <Text>{item}</Text>
-              </Item>)
+          itemComponents[pageNum].text.map((item,idx)=>{
+            if (pageNum > 0){
+              return(
+                <Item key={idx}>
+                  <Image src={`/img/${pageNum+1}-${idx+1}.png`}></Image>
+                  <Heart 
+                    onClick={()=>{HeartChange(pageNum, idx)}}
+                    src={`/img/${itemComponents[pageNum].heart[idx]}heart.png`}
+                  ></Heart>
+                  <Text>{item}</Text>
+                </Item> )}
+            else{
+              return(
+                <Item key={idx}>
+                  <Image src={`/img/${itemComponents[pageNum].imgNum[idx]}.png`}></Image>
+                  <Text>{item}</Text>
+                </Item> )}
           })
         }
       </Container>
@@ -141,7 +173,7 @@ const PageName = styled.div`
   box-sizing: border-box;
   text-align: center;
   border-bottom: 1px solid white;
-  cursor: pointer
+  cursor: pointer;
 `
 
 const Container = styled.div`
@@ -171,7 +203,7 @@ const Item = styled.div`
   flex-direction: column;
   align-items: center;
   position: relative;
-
+  
 `
 const Image = styled.img`
   
@@ -180,6 +212,7 @@ const Image = styled.img`
 const Text = styled.div`
   font-size: 12px;
   margin-top: 10px;
+  
 `
 const Heart = styled.img`
   cursor: pointer;
