@@ -8,6 +8,7 @@ import MyPage from '../pages/MyPage';
 import Monthly from "../pages/Monthly";
 import Tips from "../pages/Tips";
 import Nav from './Nav';
+import PhotoBook from "../pages/PhotoBook";
 // import SearchResult from "../pages/SearchResult";
 
 const User = () => {
@@ -19,6 +20,7 @@ const User = () => {
         <Route path="/mypage" element={<MyPage/>} />
         <Route path="/monthly" element={<Monthly/>} />
         <Route path="/tips" element={<Tips/>} />
+        <Route path="/photobook" element={<PhotoBook/>} />
       </Routes>
       <Nav/>
     </>

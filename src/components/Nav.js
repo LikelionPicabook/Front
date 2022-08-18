@@ -16,7 +16,7 @@ const Nav = () => {
         <img src="/icon/search.svg"></img>
         <Title>사진관찾기</Title>
       </NavLink>
-      <NavLink to="/user/#" className={({ isActive }) => "nav-link" + (isActive ? "activated3" : "")}>
+      <NavLink to="/user/photobook" className={({ isActive }) => "nav-link" + (isActive ? "activated3" : "")}>
         <img src="/icon/edit.svg"></img>
         <Title>포토북 제작</Title>
       </NavLink>
