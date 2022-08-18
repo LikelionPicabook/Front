@@ -20,7 +20,7 @@ const User = () => {
         <Route path="/mypage" element={<MyPage/>} />
         <Route path="/monthly" element={<Monthly/>} />
         <Route path="/tips" element={<Tips/>} />
-        <Route path="/photobook" element={<PhotoBook/>} />
+        <Route path="/photobook/*" element={<PhotoBook/>} />
       </Routes>
       <Nav/>
     </>
