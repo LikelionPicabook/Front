@@ -13,7 +13,7 @@ const Tips = () => {
     borderBottom: "1px solid white"
   }
   let pageArr = [
-    {name: 'Favorite', style: nonActiveStyle},
+    {name: 'Favorite', style: activeStyle},
     {name: 'HOT', style: nonActiveStyle},
     {name: '4컷', style: nonActiveStyle},
     {name: '프로필', style: nonActiveStyle},
@@ -65,8 +65,13 @@ const Tips = () => {
   
   const pageShow = (num) => {
     setPageNum(num);
-    pageArr[num].style = (pageArr[num].style == activeStyle) ? nonActiveStyle : activeStyle ;
-    setPageComponents(pageArr);
+    let copyPageArr = [...pageComponents];
+    for (let i=0; i<6; i++){
+      if (i===num) {copyPageArr[i].style = activeStyle ;}
+      else {copyPageArr[i].style = nonActiveStyle ;}
+    }
+    setPageComponents(copyPageArr);
+    console.log(pageComponents)
   }
   const HeartChange = (pageNum, idx) => {
     let copyArr = [...itemComponents];

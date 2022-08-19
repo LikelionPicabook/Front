@@ -32,7 +32,7 @@ const Login= () => {
       console.log(res.data);
       localStorage.clear();
       localStorage.setItem('token',res.data.key)
-      window.location.replace('http://localhost:3000/user/')
+      window.location.replace('http://localhost:3000/user/home')
     })
     .catch(err=>{
       console.log(user);

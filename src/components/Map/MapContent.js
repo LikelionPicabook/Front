@@ -42,6 +42,8 @@ export default function Map(props) {
     let markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
     // markerPosition = new kakao.maps.LatLng(37.624915253753194, 127.15122688059974); // 마커가 표시될 위치입니다
     let markerImage2 = new kakao.maps.MarkerImage(imageSrc2, imageSize2, imageOption2);
+
+
     data.forEach((el) => {
       new kakao.maps.Marker({
         map: map,

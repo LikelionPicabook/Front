@@ -42,11 +42,15 @@ const Header = styled.header`
 
 const Title = styled.div`
   position: absolute;
-  font-size: 14px;
-  bottom: 35px;
-  left: 200px;
-  font-weight: 500;
-  color: #9847ff;
+  font-size: 12px;
+  bottom: 27px;
+  right: 30px;
+  font-weight: 400;
+  color: #ffffff;
+  background-color: #9848ff;
+  padding: 10px 20px;
+  border-radius: 20px;
+  text-align: center;
 `
 
 const IconBack = styled.img`

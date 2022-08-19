@@ -18,7 +18,7 @@ const Search = () => {
     value : inputValue
   }
   const postValue = () => {
-    axios.post('http://127.0.0.1:8000/checks/photo',data)
+    axios.post('http://127.0.0.1:8000/checks/photo/',data)
       .then(res=>{
         // console.log(res);
         console.log("success");
@@ -53,9 +53,10 @@ const Search = () => {
         <Header>
           <IconBack src="/icon/arrow-left.svg" onClick={searchShowing}></IconBack>
           <form>
-            <SearchBar type="text" placeholder="사진관 이름, 컨셉, 위치 등을 입력해보세요" onChange={(event) => setInputValue(event.target.value)}></SearchBar>
+            <SearchBar type="text" placeholder="사진관 이름을 입력 후, 검색 버튼을 눌러주세요 (enter X)" onChange={(event) => setInputValue(event.target.value)}></SearchBar>
             <Button type="button" value="" onClick={handleSearch}></Button>
           </form>
+          <Small>'멋사 해커톤 인생네컷' 을 검색해보세요!</Small>
         </Header>
         <Map keyword={inputValue} />
         <Routes>
@@ -69,6 +70,13 @@ const Search = () => {
 
 
 export default Search;
+
+const Small = styled.div`
+  position: absolute;
+  font-size: 10px;
+  bottom: 65px;
+  right: 30px;
+`
 
 const Header = styled.header`
   position: absolute;
