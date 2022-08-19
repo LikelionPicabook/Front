@@ -18,20 +18,24 @@ const Login= () => {
 
   const onSubmit = (e) => {
     e.preventDefault()
-
+    
     const user = {
+      username: email,
       email: email,
       password: password
     }
-
-    Axios.post('http://localhost:8000/rest-auth/login/',user)
+    
+    // 이거 post 는 데이터 보내는거고 get 은 받는거  get('받아갈 주소', 받을)
+    Axios.post('http://127.0.0.1:8000/rest-auth/login/',user)
     .then(res => {
+      console.log(user);
       console.log(res.data);
       localStorage.clear();
       localStorage.setItem('token',res.data.key)
       window.location.replace('http://localhost:3000/user/')
     })
     .catch(err=>{
+      console.log(user);
       console.log(err)
       alert('로그인 안댐')
       setEmail('')
@@ -40,6 +44,7 @@ const Login= () => {
   }
   
 
+  
   return (
     <Background>
       <div className="title">PICABOOK</div>

@@ -18,19 +18,23 @@ const Search = () => {
     value : inputValue
   }
   const postValue = () => {
-    axios.post(`http://127.0.0.1:8000/checks/search/keyword?=${inputValue}`,data)
+    axios.post('http://127.0.0.1:8000/checks/photo',data)
       .then(res=>{
-        console.log(res);
+        // console.log(res);
         console.log("success");
     })
       .catch(err=>{
         console.log(err);
     })
   }
+  // }
+  // const handleSearch = () => {
+  //   postValue();
+  //   navigate(`keyword?=${inputValue}`,{state: {keyword:inputValue}})
+  // }
   const handleSearch = () => {
-    console.log(inputValue);
     postValue();
-    navigate(`keyword?=${inputValue}`,{state: {keyword:inputValue}})
+    navigate('keyword', {state: {keyword:inputValue}})
   }
   if (showing){
     return(
@@ -53,7 +57,7 @@ const Search = () => {
             <Button type="button" value="" onClick={handleSearch}></Button>
           </form>
         </Header>
-        <Map/>
+        <Map keyword={inputValue} />
         <Routes>
           <Route path="/keyword" element={<SearchResult/>}/>
         </Routes>
@@ -62,6 +66,7 @@ const Search = () => {
     );
   }
 }
+
 
 export default Search;
 

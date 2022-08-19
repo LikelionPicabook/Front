@@ -65,7 +65,7 @@ const Tips = () => {
   
   const pageShow = (num) => {
     setPageNum(num);
-    pageArr[num].style = activeStyle;
+    pageArr[num].style = (pageArr[num].style == activeStyle) ? nonActiveStyle : activeStyle ;
     setPageComponents(pageArr);
   }
   const HeartChange = (pageNum, idx) => {

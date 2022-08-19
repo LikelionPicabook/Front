@@ -1,33 +1,68 @@
 import react from "react";
-import { useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import styled from "styled-components";
+import Map from "../components/Map/MapContent";
 
 const SearchResult = () => {
   console.log(useLocation());
   const keyword = useLocation().state.keyword;
-  console.log(keyword)
+  const navigate = useNavigate();
+  const goBack = () =>{
+    navigate('/user/search');
+  }
   return(
-    <Result> { keyword }에 대한 검색 결과 입니다. </Result>
+    <>
+    <Header>
+      <IconBack onClick={ goBack } src="/icon/arrow-left.svg"></IconBack>
+      <Title> { keyword }</Title>
+    </Header>
+    <Map keyword={keyword} />
+    </>
   )
 }
 
 export default SearchResult;
 
-const Result = styled.div`
-  z-index: 999;
-  position: absolute;
-  top: 600px;
-  width: 300px;
-  height: 100px;
-  background-color: #ffffff;
-  left: 0;
-  right: 0;
-  margin: auto;
 
-  border: 1px solid #d5d5d5;
-  border-radius: 20px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
-  
-  padding: 20px;
-  box-sizing: border-box;
+const Header = styled.header`
+  position: absolute;
+  width: 100%;
+  height: 110px;
+  left: 0px;
+  top: 0px;
+
+  background: #FFFFFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.03);
+  z-index: 500;
+  border-bottom: 1px solid #d5d5d5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+const Title = styled.div`
+  position: absolute;
+  font-size: 14px;
+  bottom: 35px;
+  left: 200px;
+  font-weight: 500;
+  color: #9847ff;
+`
+
+const IconBack = styled.img`
+  position: absolute;
+  bottom: 32px;
+  left: 25px;
+  cursor: pointer;
+`
+
+const Button = styled.input`
+  background-image:url('/icon/search-icon.svg');
+  border: none;
+  background-color: transparent;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 32px;
+  top: 57px;
 `
